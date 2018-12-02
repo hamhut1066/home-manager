@@ -5,11 +5,12 @@ os:
   - osx
 
 stages:
-  - test
+  - test1
+  - test2
 
 jobs:
   include:
-    - stage: test
+    - stage: test1
       before_script:
       - mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/$USER
       - mkdir -p ~/.config/nixpkgs
@@ -17,7 +18,7 @@ jobs:
       - cat ~/.config/nixpkgs/home.nix
       - env
       script: nix-build . -A install
-    - stage: test
+    - stage: test2
       before_script:
       - mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/$USER
       - mkdir -p ~/.config/nixpkgs
